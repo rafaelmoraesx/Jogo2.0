@@ -1,5 +1,3 @@
-// script.js
-
 let players = [];
 
 document.getElementById('start-form').addEventListener('submit', startGame);
