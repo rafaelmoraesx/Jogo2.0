@@ -1,9 +1,11 @@
+/* styles.css */
+
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: Arial, sans-serif;
-    background-image: url(./imagem/equipamento-de-videogame-futurista-iluminado-em-ia-generativa-de-boate_188544-32105.avif); /* Caminho da imagem de fundo */
+    background-image: url(./imagem/imagem.jpg); /* Caminho da imagem de fundo */
     background-size: cover;
     background-position: center;
     display: flex;
@@ -30,6 +32,11 @@ body, html {
     max-width: 400px;
     width: 100%;
     margin-bottom: 20px;
+   
+}
+
+.game-container, .result-container{
+    display: none;
 }
 
 h1, h2 {
@@ -37,7 +44,7 @@ h1, h2 {
     color: #333;
 }
 
-form, .game-container, .result-container {
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,14 +76,16 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color:#0056b3;
 }
+
 
 #feedback {
     margin-top: 20px;
     font-size: 16px;
     color: #ff0000;
 }
+
 
 #correctNumber, #score {
     font-weight: bold;
