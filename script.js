@@ -1,4 +1,5 @@
 let players = [];
+let attempts = 0;
 
 document.getElementById('start-form').addEventListener('submit', startGame);
 document.getElementById('guess-form').addEventListener('submit', function(event) {
@@ -29,7 +30,7 @@ function checkGuess() {
         alert('Por favor, insira um número válido entre 1 e 100.');
         return;
     }
-    attempts++;
+    attempts++
     if (guess === targetNumber) {
         document.getElementById('feedback').innerText = '';
         document.getElementById('game-container').style.display = 'none';
@@ -41,12 +42,34 @@ function checkGuess() {
         savePlayer(playerName, attempts);
         updateLeaderboard();
     } else if (guess < targetNumber) {
-        document.getElementById('feedback').innerText = 'O número é maior. Tente novamente!';
-    } else {
-        document.getElementById('feedback').innerText = 'O número é menor. Tente novamente!';
+        console.log(targetNumber);
+        let diferenca = targetNumber - guess;
+        if (diferenca <= 10) {
+            document.getElementById('feedback').innerText = 'O número é maior. Tente novamente!';
+            document.getElementById('feedback').style.color = '#32CD32'; // Verde
+        } else if (diferenca > 10 && diferenca <= 20) {
+            document.getElementById('feedback').innerText = 'O número é maior. Tente novamente!';
+            document.getElementById('feedback').style.color = '#FFFF00'; // Amarelo
+        } else {
+            document.getElementById('feedback').innerText = 'O número é maior. Tente novamente!';
+            document.getElementById('feedback').style.color = '#FF0000'; // Vermelho
+        }
+    } else if (guess > targetNumber) {
+        console.log(targetNumber);
+        let diferenca = guess - targetNumber;
+        if (diferenca <= 10) {
+            document.getElementById('feedback').innerText = 'O número é menor. Tente novamente!';
+            document.getElementById('feedback').style.color = '#32CD32'; // Verde
+        } else if (diferenca > 10 && diferenca <= 20) {
+            document.getElementById('feedback').innerText = 'O número é menor. Tente novamente!';
+            document.getElementById('feedback').style.color = '#FFFF00'; // Amarelo
+        } else {
+            document.getElementById('feedback').innerText = 'O número é menor. Tente novamente!';
+            document.getElementById('feedback').style.color = '#FF0000'; // Vermelho
+        }
     }
+    
 }
-
 function savePlayer(name, score) {
     players.push({ name, score });
     players.sort((a, b) => a.score - b.score); // Ordena do menor para o maior número de tentativas
